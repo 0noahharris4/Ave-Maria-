@@ -1,1 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ave Maria Books &amp; Gifts | Northern Kentucky's Catholic Store</title>
+<meta name="description" content="Ave Maria Books & Gifts is Northern Kentucky's Catholic store in Florence, KY — books, sacramentals, prayer aids, gifts, and items from local artists.">
+<link rel="icon" type="image/png" href="images/image-1.png">
+<style>
+/* ===== Ave Maria Books & Gifts ===== */
 
+:root {
+  --navy: #2b2b78;
+  --navy-dark: #1d1d54;
+  --sky: #00ade9;
+  --sky-dark: #0090c4;
+  --gold: #c9a24b;
+  --cream: #faf7f0;
+  --white: #ffffff;
+  --ink: #22223f;
+  --ink-soft: #4d4d6b;
+  --border: #e6e1d3;
+  --shadow: 0 10px 30px rgba(29, 29, 84, 0.12);
+  --radius: 14px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: var(--ink);
+  background: var(--white);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: var(--navy);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a { color: var(--sky-dark); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+img { display: block; max-width: 100%; }
+
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.9rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.btn:hover { text-decoration: none; transform: translateY(-2px); }
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--navy-dark);
+  box-shadow: 0 8px 20px rgba(201, 162, 75, 0.35);
+}
+.btn-primary:hover { background: #d6b366; }
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--white);
+  border: 2px solid var(--white);
+}
+.btn-secondary:hover { background: var(--white); color: var(--navy); }
+
+.section-heading {
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+.section-kicker {
+  color: var(--sky-dark);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin-bottom: 0.6rem;
+}
+.section-heading h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); margin-bottom: 0.9rem; }
+.section-sub { color: var(--ink-soft); font-size: 1.05rem; }
+
+/* ===== Navbar ===== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--white);
+  box-shadow: 0 2px 14px rgba(29, 29, 84, 0.08);
+}
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.7rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.nav-logo img { height: 52px; width: 52px; object-fit: contain; }
+.nav-logo-text {
+  font-family: "Georgia", serif;
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 1.15rem;
+  line-height: 1.15;
+}
+.nav-logo-text small {
+  font-weight: 400;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sky-dark);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.9rem;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--navy);
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+.nav-links a:hover { color: var(--sky-dark); text-decoration: none; }
+
+.nav-call-btn {
+  background: var(--sky);
+  color: var(--white) !important;
+  padding: 0.55rem 1.3rem;
+  border-radius: 999px;
+  font-weight: 700;
+}
+.nav-call-btn:hover { background: var(--sky-dark); }
+
+.nav-toggle-checkbox { display: none; }
+.nav-toggle-label {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  z-index: 110;
+}
+.nav-toggle-label span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: var(--navy);
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* ===== Hero ===== */
+.hero {
+  position: relative;
+  min-height: 82vh;
+  display: flex;
+  align-items: center;
+  background: url("images/image-2.jpg") center 30% / cover no-repeat;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(29,29,84,0.72) 0%, rgba(29,29,84,0.55) 45%, rgba(29,29,84,0.78) 100%);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--white);
+}
+.hero-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.hero h1 {
+  color: var(--white);
+  font-size: clamp(2.1rem, 5.5vw, 3.4rem);
+  margin-bottom: 1.2rem;
+}
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: rgba(255,255,255,0.92);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ===== Info strip ===== */
+.info-strip {
+  background: var(--navy);
+  color: var(--white);
+}
+.info-strip-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.4rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.98rem;
+}
+.info-label {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  color: var(--gold);
+  font-weight: 700;
+}
+.info-item a { color: var(--white); font-weight: 700; }
+
+/* ===== Offer ===== */
+.offer {
+  padding: 5rem 1.5rem;
+  background: var(--cream);
+}
+.offer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.offer-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease;
+}
+.offer-card:hover { transform: translateY(-6px); }
+.offer-img { aspect-ratio: 4/3; overflow: hidden; }
+.offer-img img { width: 100%; height: 100%; object-fit: cover; }
+.offer-card h3 { padding: 1.2rem 1.4rem 0.3rem; font-size: 1.2rem; }
+.offer-card p { padding: 0 1.4rem 1.4rem; color: var(--ink-soft); font-size: 0.96rem; }
+
+/* ===== About ===== */
+.about { padding: 5rem 1.5rem 3rem; }
+.about-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+.about-text h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); margin-bottom: 1rem; }
+.about-text p { margin-bottom: 1.1rem; color: var(--ink-soft); }
+.about-img img {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+.peek-gallery {
+  max-width: 1200px;
+  margin: 4rem auto 0;
+}
+.peek-heading {
+  text-align: center;
+  font-weight: 700;
+  color: var(--sky-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  margin-bottom: 1.2rem;
+}
+.peek-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.peek-grid img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+/* ===== Visit ===== */
+.visit {
+  padding: 5rem 1.5rem;
+  background: var(--cream);
+}
+.visit-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2.5rem;
+}
+.visit-map {
+  min-height: 420px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.visit-map iframe { width: 100%; height: 100%; min-height: 420px; }
+.visit-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+.visit-block {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.6rem;
+  box-shadow: var(--shadow);
+}
+.visit-block h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+  color: var(--sky-dark);
+}
+.visit-note { color: var(--ink-soft); font-size: 0.92rem; margin-top: 0.5rem; }
+.hours-table { width: 100%; border-collapse: collapse; }
+.hours-table td { padding: 0.25rem 0; font-size: 0.95rem; }
+.hours-table td:first-child { color: var(--ink-soft); }
+.hours-table td:last-child { text-align: right; font-weight: 600; color: var(--navy); }
+
+/* ===== Footer ===== */
+.site-footer {
+  background: var(--navy-dark);
+  color: rgba(255,255,255,0.85);
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 2rem;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 2rem;
+}
+.footer-brand { display: flex; flex-direction: column; gap: 0.8rem; }
+.footer-brand img { height: 56px; width: 56px; object-fit: contain; }
+.footer-brand p { font-size: 0.95rem; color: rgba(255,255,255,0.75); }
+.footer-col h4 {
+  color: var(--gold);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.8rem;
+}
+.footer-col p { font-size: 0.92rem; margin-bottom: 0.4rem; overflow-wrap: break-word; }
+.footer-col a { color: rgba(255,255,255,0.85); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.12);
+  text-align: center;
+  padding: 1.2rem 1.5rem;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 980px) {
+  .offer-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-inner { grid-template-columns: 1fr; }
+  .about-img { order: -1; }
+  .visit-grid { grid-template-columns: 1fr; }
+  .visit-map { min-height: 320px; }
+  .visit-map iframe { min-height: 320px; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 720px) {
+  .nav-toggle-label { display: flex; }
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+    box-shadow: 0 12px 20px rgba(29,29,84,0.12);
+  }
+  .nav-toggle-checkbox:checked ~ .nav-links { max-height: 320px; }
+  .nav-links li { width: 100%; padding: 0; }
+  .nav-links a { display: block; padding: 0.9rem 1.5rem; width: 100%; }
+  .nav-call-btn { margin: 0.7rem 1.5rem; display: inline-block; width: calc(100% - 3rem); text-align: center; }
+
+  .nav-toggle-checkbox:checked + .nav-toggle-label span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .nav-toggle-checkbox:checked + .nav-toggle-label span:nth-child(2) { opacity: 0; }
+  .nav-toggle-checkbox:checked + .nav-toggle-label span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  .offer-grid { grid-template-columns: 1fr; }
+  .peek-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { grid-template-columns: 1fr; text-align: left; }
+  .info-strip-inner { gap: 1.6rem; }
+}
+
+@media (max-width: 420px) {
+  .nav-logo-text { font-size: 1rem; }
+  .hero { min-height: 90vh; }
+}
+
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="nav-container">
+    <a href="#home" class="nav-logo">
+      <img src="images/image-1.png" alt="Ave Maria Books & Gifts logo">
+      <span class="nav-logo-text">Ave Maria<br><small>Books &amp; Gifts</small></span>
+    </a>
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#offer">What We Offer</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#visit">Visit Us</a></li>
+      <li><a href="tel:+18596576279" class="nav-call-btn">Call Us</a></li>
+    </ul>
+  </div>
+</header>
+
+<section id="home" class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-kicker">Florence, Kentucky</p>
+    <h1>Northern Kentucky's<br>Catholic Store</h1>
+    <p class="hero-sub">Books, prayer aids, and sacramentals &mdash; plus gifts and treasures from local artists. Come visit us at our home on US Highway&nbsp;42.</p>
+    <div class="hero-buttons">
+      <a href="#visit" class="btn btn-primary">Visit Us</a>
+      <a href="tel:+18596576279" class="btn btn-secondary">Call (859) 657-6279</a>
+    </div>
+  </div>
+</section>
+
+<section class="info-strip">
+  <div class="info-strip-inner">
+    <div class="info-item">
+      <span class="info-label">Address</span>
+      <span>8437 US Highway 42, Florence, KY 41042</span>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Phone</span>
+      <a href="tel:+18596576279">(859) 657-6279</a>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Hours Today</span>
+      <span>See full hours below</span>
+    </div>
+  </div>
+</section>
+
+<section id="offer" class="offer">
+  <div class="section-heading">
+    <p class="section-kicker">What We Offer</p>
+    <h2>Everything for the Catholic Home &amp; Heart</h2>
+    <p class="section-sub">From first Communion gifts to statues for the garden, our shelves are filled with items to nourish faith at every stage of life.</p>
+  </div>
+
+  <div class="offer-grid">
+    <div class="offer-card">
+      <div class="offer-img"><img src="images/image-3.jpg" alt="Shelves of Catholic books at Ave Maria Books & Gifts"></div>
+      <h3>Books</h3>
+      <p>Scripture, saints' biographies, catechism, prayer, and children's books &mdash; carefully curated for every stage of the faith journey.</p>
+    </div>
+    <div class="offer-card">
+      <div class="offer-img"><img src="images/image-4.jpg" alt="Wall display of crucifixes and religious art"></div>
+      <h3>Sacramentals</h3>
+      <p>Crucifixes, crosses, and framed sacred art in a wide range of styles and sizes, for the home, car, or as a meaningful gift.</p>
+    </div>
+    <div class="offer-card">
+      <div class="offer-img"><img src="images/image-5.jpg" alt="Holy cards and prayer aids organized by saint"></div>
+      <h3>Holy Cards &amp; Prayer Aids</h3>
+      <p>Holy cards, novenas, rosaries, and devotional aids organized by saint &mdash; easy to find exactly who or what you're looking for.</p>
+    </div>
+    <div class="offer-card">
+      <div class="offer-img"><img src="images/image-6.jpg" alt="Painted statues of saints and the Holy Family"></div>
+      <h3>Statues &amp; Figures</h3>
+      <p>Statues of the Holy Family, saints, and angels in a range of finishes and sizes &mdash; indoor pieces and outdoor garden statuary alike.</p>
+    </div>
+    <div class="offer-card">
+      <div class="offer-img"><img src="images/image-7.jpg" alt="Sterling silver crosses and religious jewelry"></div>
+      <h3>Religious Jewelry</h3>
+      <p>Sterling silver crosses, crucifix pendants, medals, and rosaries &mdash; beautifully boxed and ready to give as a gift.</p>
+    </div>
+    <div class="offer-card">
+      <div class="offer-img"><img src="images/image-8.jpg" alt="Gift shelf with candles and items from local artists"></div>
+      <h3>Gifts &amp; Local Artists</h3>
+      <p>Candles, keepsakes, and one-of-a-kind pieces from local artists &mdash; thoughtful gifts you won't find anywhere else.</p>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="about-inner">
+    <div class="about-text">
+      <p class="section-kicker">About Us</p>
+      <h2>Northern Kentucky's Catholic Store</h2>
+      <p>Ave Maria Books &amp; Gifts has served Catholic families throughout Northern Kentucky for years, offering a warm, welcoming place to find books, prayer aids, and sacramentals for every occasion. Since October 2017, we've been located at the corner of US Highway 42 and Weaver (Hopeful Church Rd) in Florence &mdash; right next to Weaver Dental, and near Emerson Bakery and Burger King.</p>
+      <p>Beyond books and sacramentals, we're proud to carry a variety of gifts, including items from local artists. Whatever brings you in &mdash; a First Communion, a Confirmation, a Baptism, or simply a moment to browse &mdash; we hope you'll find something that speaks to your faith.</p>
+      <a href="#visit" class="btn btn-primary">Plan Your Visit</a>
+    </div>
+    <div class="about-img">
+      <img src="images/image-9.jpg" alt="Cozy reading room inside Ave Maria Books & Gifts">
+    </div>
+  </div>
+
+  <div class="peek-gallery">
+    <p class="peek-heading">A Peek Inside Our Store</p>
+    <div class="peek-grid">
+      <img src="images/image-10.jpg" alt="Infant of Prague statue display">
+      <img src="images/image-11.jpg" alt="Glass case of saint statues">
+      <img src="images/image-12.jpg" alt="Shelf of garden statues">
+      <img src="images/image-13.jpg" alt="Front retail floor of Ave Maria Books & Gifts">
+    </div>
+  </div>
+</section>
+
+<section id="visit" class="visit">
+  <div class="section-heading">
+    <p class="section-kicker">Visit Us</p>
+    <h2>Come See Us in Florence</h2>
+  </div>
+
+  <div class="visit-grid">
+    <div class="visit-map">
+      <iframe
+        title="Map to Ave Maria Books & Gifts"
+        src="https://www.google.com/maps?q=8437+US+Highway+42,+Florence,+KY+41042&output=embed"
+        width="100%" height="100%" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <div class="visit-details">
+      <div class="visit-block">
+        <h3>Address</h3>
+        <p>8437 US Highway 42<br>Florence, KY 41042</p>
+        <p class="visit-note">At the corner of US Highway 42 and Weaver (Hopeful Church Rd) &mdash; next to Weaver Dental, near Emerson Bakery and Burger King.</p>
+      </div>
+      <div class="visit-block">
+        <h3>Contact</h3>
+        <p><a href="tel:+18596576279">(859) 657-6279</a></p>
+        <p><a href="mailto:avemariaky@gmail.com">avemariaky<wbr>@gmail.com</a></p>
+      </div>
+      <div class="visit-block">
+        <h3>Hours</h3>
+        <table class="hours-table">
+          <tr><td>Monday</td><td>10 AM &ndash; 5 PM</td></tr>
+          <tr><td>Tuesday</td><td>10 AM &ndash; 5 PM</td></tr>
+          <tr><td>Wednesday</td><td>10 AM &ndash; 5 PM</td></tr>
+          <tr><td>Thursday</td><td>10 AM &ndash; 5 PM</td></tr>
+          <tr><td>Friday</td><td>10 AM &ndash; 5 PM</td></tr>
+          <tr><td>Saturday</td><td>10 AM &ndash; 2 PM</td></tr>
+          <tr><td>Sunday</td><td>Closed</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="images/image-1.png" alt="Ave Maria Books & Gifts logo">
+      <p>Ave Maria Books &amp; Gifts<br>Northern Kentucky's Catholic Store</p>
+    </div>
+    <div class="footer-col">
+      <h4>Visit</h4>
+      <p>8437 US Highway 42<br>Florence, KY 41042</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p><a href="tel:+18596576279">(859) 657-6279</a></p>
+      <p><a href="mailto:avemariaky@gmail.com">avemariaky<wbr>@gmail.com</a></p>
+    </div>
+    <div class="footer-col">
+      <h4>Hours</h4>
+      <p>Mon&ndash;Fri: 10 AM&ndash;5 PM<br>Sat: 10 AM&ndash;2 PM<br>Sun: Closed</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; <span id="year"></span> Ave Maria Books &amp; Gifts. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.querySelectorAll('.nav-links a').forEach(function(link){
+    link.addEventListener('click', function(){
+      document.getElementById('nav-toggle').checked = false;
+    });
+  });
+</script>
+
+</body>
+</html>
